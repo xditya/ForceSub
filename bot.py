@@ -148,4 +148,4 @@ async def strt(event):
 
     
 print("ForceSub Bot has started.\nDo visit @BotzHub!")
-BotzHub.run_until_disconnected()ultroid
+BotzHub.run_until_disconnected()
