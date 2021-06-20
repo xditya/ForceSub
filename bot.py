@@ -61,7 +61,7 @@ channel = xchannel.replace("@", "")
 async def get_user_join(id):
     ok = True
     try:
-        await BotzHub(GetParticipantRequest(channel=channel, user_id=id))
+        await BotzHub(GetParticipantRequest(channel=channel, participant=id))
         ok = True
     except UserNotParticipantError:
         ok = False
@@ -148,4 +148,4 @@ async def strt(event):
 
     
 print("ForceSub Bot has started.\nDo visit @BotzHub!")
-BotzHub.run_until_disconnected()
+BotzHub.run_until_disconnected()ultroid
