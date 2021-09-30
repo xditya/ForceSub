@@ -26,7 +26,7 @@ from telethon.tl.functions.channels import GetParticipantRequest
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.INFO)
 
-appid = apihash = bottoken = None
+appid = apihash = bottoken = 1501467540:AAGLCM_Neu5joF7zczbpck3PSWpbcP4RwLQ
 # start the bot
 print("Starting...")
 try:
