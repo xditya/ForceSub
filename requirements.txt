@@ -1,2 +1,2 @@
 python-decouple
-telethon==1.22.0
+telethon
