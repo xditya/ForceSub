@@ -27,6 +27,18 @@ Watch the tutorial on deploying - https://youtu.be/8JTWG6yFi-4
 - `touch .env`,  `nano .env` and fill in the [vars](.env.sample), Ctrl+S, Ctrl+X
 - Run the bot, `python3 bot.py`
 
+# Deploy docker
+Implemented by [ShadowHunterV](https://github.com/ShadowHunterV/)
+
+- `git clone https://github.com/xditya/ForceSub`
+- `cd ForceSub`
+- `touch .env`,  `nano .env` and fill in the [vars](.env.sample), Ctrl+S, Ctrl+X
+- Start Docker daemon (Skip If already running) `sudo dockerd`
+- Build Docker image `sudo docker build . -t forcesub`
+- Run the image `sudo docker run forcesub`
+- To stop the running image `sudo docker ps` Then `sudo docker stop` `CONTAINER ID`
+
+
 # Credits
 - [Telethon](https://github.com/LonamiWebs/Telethon)
 - [BotzHub](https://t.me/BotzHub)
