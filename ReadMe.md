@@ -19,6 +19,8 @@ Note: `WELCOME_MSG` and `WELCOME_NOT_JOINED` can both be formatted using paramet
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 # Deploy locally
+Watch the tutorial on deploying - https://youtu.be/8JTWG6yFi-4
+
 - `git clone https://github.com/xditya/ForceSub`
 - `cd ForceSub`
 - `pip3 install -U -r requirements.txt`
