@@ -64,11 +64,13 @@ async def get_user_join(id):
     return ok
 
 
-@BotzHub.on(events.ChatAction())
+@BotzHub.on(events.ChatAction)
 async def _(event):
     if on_join is False:
         return
     if not event.is_group:
+        return
+    if event.action_message:
         return
     if event.user_joined or event.user_added:
         user = await event.get_user()
@@ -135,13 +137,31 @@ async def mute_on_msg(event):
         except Exception as e:
             log.error(e)
             return
-        await event.reply(
-            f"Hey {nm}, seems like you haven't joined our channel. Please join @{channel} and then press the button below to unmute yourself!",
-            buttons=[
-                [Button.url("Channel", url=f"https://t.me/{channel}")],
-                [Button.inline("UnMute Me", data=f"unmute_{event.sender_id}")],
-            ],
+        user = await event.get_sender()
+        chat = await event.get_chat()
+        title = chat.title or "this chat"
+        pp = await BotzHub.get_participants(chat)
+        count = len(pp)
+        mention = f"[{get_display_name(user)}](tg://user?id={user.id})"
+        name = user.first_name
+        last = user.last_name
+        fullname = f"{name} {last}" if last else name
+        username = f"@{uu}" if (uu := user.username) else mention
+        reply_msg = welcome_not_joined.format(
+            mention=mention,
+            title=title,
+            fullname=fullname,
+            username=username,
+            name=name,
+            last=last,
+            channel=f"@{channel}",
+            count=count,
         )
+        butt = [
+            Button.url("Channel", url=f"https://t.me/{channel}"),
+            Button.inline("UnMute Me", data=f"unmute_{event.sender_id}"),
+        ]
+        await event.reply(reply_msg, buttons=butt)
 
 
 @BotzHub.on(events.callbackquery.CallbackQuery(data=re.compile(b"unmute_(.*)")))
